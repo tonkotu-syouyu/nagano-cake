@@ -1,7 +1,7 @@
+
 Rails.application.routes.draw do
-  
+  devise_for :admins
    # admin
-    devise_for :admins
   namespace :admin do
     root 'homes#top'
     get 'homes/top'
