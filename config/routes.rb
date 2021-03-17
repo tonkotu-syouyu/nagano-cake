@@ -2,7 +2,7 @@
 Rails.application.routes.draw do
 
   devise_for :customers, controllers: {
-    sessinons: 'customers/sessions',
+    sessions: 'customers/sessions',
     passwords: 'customers/passwords',
     registrations: 'customers/registrations'
   }
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'homes#top'
     get 'homes/top'
-    resources :sessions, only: [:new, :create, :destroy]
+    # resources :sessions, only: [:new, :create, :destroy]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
