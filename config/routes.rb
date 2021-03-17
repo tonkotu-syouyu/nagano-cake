@@ -1,11 +1,14 @@
 
 Rails.application.routes.draw do
 
+
+
   devise_for :customers, controllers: {
     sessions: 'customers/sessions',
     passwords: 'customers/passwords',
     registrations: 'customers/registrations'
   }
+
 
 
 
@@ -37,8 +40,13 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'homes#top'
     get 'homes/top'
+
+#     resources :sessions, only: [:new, :create, :destroy]
+    resources :products, only: [:index, :new, :create, :show, :edit, :update]
+=======
     # resources :sessions, only: [:new, :create, :destroy]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
+
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
@@ -50,4 +58,4 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   #get 'top' => 'public/homes#top'
-end
+  end
