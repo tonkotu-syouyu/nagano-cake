@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2021_03_17_071324) do
-
+ActiveRecord::Schema.define(version: 2021_03_17_103220) do
 
   create_table "addresses", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -80,10 +78,8 @@ ActiveRecord::Schema.define(version: 2021_03_17_071324) do
     t.integer "price"
     t.text "introduction"
     t.string "image_id"
-    t.integer "genre_id_id"
-    t.index ["genre_id_id"], name: "index_products_on_genre_id_id"
-
-
+    t.integer "genre_id"
+    t.index ["genre_id"], name: "index_products_on_genre_id"
   end
 
 end
