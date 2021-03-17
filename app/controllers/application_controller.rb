@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
       :telephone_number,
       :is_deleted
     ])
-    devise_parameter_sanitizer.permit(:sign_in, key: [:name])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
   end
 end

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       post 'orders/confirm'
       get 'orders/complete'
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
-  #end
+  end
 
 
   devise_for :admins
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :orders_details, only: [:update]
-  # end
+  end
 
   devise_for :customers
 
@@ -39,5 +39,3 @@ Rails.application.routes.draw do
 
   #get 'top' => 'public/homes#top'
   end
-end
-end
