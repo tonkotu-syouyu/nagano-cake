@@ -1,7 +1,7 @@
 
 Rails.application.routes.draw do
-  
-  #namespace :public do
+
+  namespace :public, path: "" do
     root to: 'homes#top'
     get '/about', to: 'homes#about'
     resources :products, only:[:index, :show]
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       post 'orders/confirm'
       get 'orders/complete'
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
-  #end
+  end
 
 
   devise_for :admins
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update]
     resources :orders_details, only: [:update]
   end
-  
+
   devise_for :customers
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -7,6 +7,8 @@ class Public::CartProductsController < ApplicationController
   end
 
   def destroy
+    product = Product.find(paramd[:id])
+    product.destroy
   end
 
   def destroy_all
