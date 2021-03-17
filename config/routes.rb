@@ -1,7 +1,7 @@
 
 Rails.application.routes.draw do
   
-  #namespace :public do
+  namespace :public do
     root to: 'homes#top'
     get '/about', to: 'homes#about'
     resources :products, only:[:index, :show]
@@ -17,16 +17,17 @@ Rails.application.routes.draw do
       post 'orders/confirm'
       get 'orders/complete'
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
-  #end
+  end
 
 
   devise_for :admins
+
    # admin
   namespace :admin do
     root 'homes#top'
     get 'homes/top'
     resources :sessions, only: [:new, :create, :destroy]
-    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :products, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]

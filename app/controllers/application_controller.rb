@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protected
   
   def configure_permitted_parameters
-    devise_parameters_sanitizer.permit(:sign_up, key:[
+    devise_parameter_sanitizer.permit(:sign_up, keys:[
       :email,
       :last_name,
       :last_name_kana,
@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
       :telephone_number,
       :is_deleted
     ])
-    devise_parameters_sanitizer.permit(:sign_in, key: [:name])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
   end
 end
