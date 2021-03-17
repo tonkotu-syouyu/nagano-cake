@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>NaganoCake</title>
-    <%= csrf_meta_tagsgit %>
+    
+    <%= csrf_meta_tag %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,6 +11,10 @@
   </head>
 
   <body>
+    <li>
+    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+    </li>
+
     <%= yield %>
   </body>
 </html>
