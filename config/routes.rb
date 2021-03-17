@@ -1,7 +1,7 @@
 
 Rails.application.routes.draw do
-  
-  #namespace :public do
+
+  namespace :public, path: "" do
     root to: 'homes#top'
     get '/about', to: 'homes#about'
     resources :products, only:[:index, :show]
@@ -26,16 +26,18 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'homes/top'
     resources :sessions, only: [:new, :create, :destroy]
-    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :products, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :orders_details, only: [:update]
-  end
-  
+  # end
+
   devise_for :customers
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   #get 'top' => 'public/homes#top'
+  end
+end
 end
