@@ -1,2 +1,20 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+
+<p>
+  ようこそ、ながのCAKEへ！<br>
+  このサイトは、ケーキ販売のECサイトになります。<br>
+  会員でない方も商品の閲覧はできますが、<br>
+  購入には会員登録が必要になります。
+</p>
+
+
+
+<h2>新着商品</h2>
+<%= @product.each.do |product| %>
+  <h4>Image</h4>
+  <%= product.image_id %>
+  <h4>商品名</h4>
+  <%= product.name %>
+  <h4>¥0.000</h4>
+  <%= product.price %>
+
+<%= link_to "全ての商品を見る >", public_products_path %>
