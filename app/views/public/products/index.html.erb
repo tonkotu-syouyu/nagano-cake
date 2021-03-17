@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <%# @products.each do |product| %>
+    <div class="col-md-4">
+      <h2>商品一覧</h2>
+      <p>Image</p>
+      <%# image_tag product.image_id %>
+      <p>商品名</p>
+      <%# product.name %>
+      <p>¥0,000</p>
+      <%# product.price %>
+    </div>
+    <%# end %>
+  </div>
+</div>
+
+
+<%= paginate @products %>
