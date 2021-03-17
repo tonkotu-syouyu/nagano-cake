@@ -69,3 +69,4 @@ gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem 'jp_prefecture'
 gem 'pry-rails'
+gem "pry-byebug"
