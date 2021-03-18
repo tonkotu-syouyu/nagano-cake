@@ -15,7 +15,7 @@
   <tbody>
     <tr>
       <td><%= product.id %></td>
-      <td><%= attachment_image_tag product, :image_id, size: "60x60", fallback: "no_image.jpg"%></td>
+      <td><%= attachment_image_tag product, :image_id, size: "60x60", fallback: "no_image.jpeg"%></td>
       <td><%= link_to product.name, admin_product_path(@product) %></td>
       <td><%= product.price %></td>
       <td><%= product.genre_id %></td>
