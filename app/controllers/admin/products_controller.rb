@@ -5,7 +5,8 @@ before_action :authenticate_admin!,only: [:create,:edit,:update,:index, :show, :
   end
 
   def new
-    @products = Product.new
+    @products = Product.all
+    @product = Product.new
   end
 
   def create
