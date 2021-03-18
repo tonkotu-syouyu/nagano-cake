@@ -10,9 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_17_103220) do
+ActiveRecord::Schema.define(version: 2021_03_15_132757) do
 
   create_table "addresses", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "name"
+    t.string "postal_code"
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,6 +34,9 @@ ActiveRecord::Schema.define(version: 2021_03_17_103220) do
   end
 
   create_table "cart_products", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "customer_id"
+    t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,29 +62,42 @@ ActiveRecord::Schema.define(version: 2021_03_17_103220) do
   end
 
   create_table "genres", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
   end
 
   create_table "order_details", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "order_id"
+    t.integer "price"
+    t.integer "amount"
+    t.integer "making_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "postal_code"
+    t.string "address"
+    t.string "name"
+    t.integer "status"
+    t.integer "total_payment"
+    t.integer "shipping_cost"
+    t.integer "payment_method"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
     t.boolean "is_active"
+    t.string "name"
     t.integer "price"
     t.text "introduction"
     t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "genre_id"
     t.index ["genre_id"], name: "index_products_on_genre_id"
   end
