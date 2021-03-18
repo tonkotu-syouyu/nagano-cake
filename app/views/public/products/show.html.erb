@@ -1,10 +1,21 @@
-<h2>いちごのショートケーキ(ホール）</h2>
-<%= product.name %>
-<p>栃木県産のとちおとめを贅沢に使用しています。</p>
-<%= product.introduction %>
-<h3>¥ 2,750</h3>
-<%= product.price %>
-<%= form_with model: @cart_product do |f| %>
-  <%= f.select :amount, ["1", "1"],["2","2"],["3","3"], include_blank: "個数選択" %>
-<% end %>
-<%= button_to 'カートに入れる', public_cart_products_path, class: 'fbtn' %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <%= attachment_image_tag @product, :image_id, size: "300x300", fallback: "no_image.jpeg" %>
+    </div>
+    <div class="col-lg-8">
+      <h2><%= @product.name %></h2>
+      <p><%= @product.introduction %></p>
+      <h3>
+        <%= @product.price %>
+        <p>(税込)</p>
+      </h3>
+      <%= form_with model: @cart_product do |f| %>
+        <%= f.select :amount, ["1", "1"],["2","2"],["3","3"], include_blank: "個数選択" %>
+      <% end %>
+      <%= button_to 'カートに入れる', public_cart_products_path, class: 'btn btn-success' %>
+    </div>
+  </div>
+</div>
+
+
