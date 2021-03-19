@@ -1,9 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="mx-auto">
-      <title class="pull-left">
-        <h2>商品一覧</h2><p>全x件</p>
-      </title>
+    <div class="col-lg-4">
+      <h2>商品一覧</h2><p>全<%= @products.count %>件</p>
       <%= @products.each do |product| %>
       <%= image_tag product.image_id %>
       <%= product.name %>

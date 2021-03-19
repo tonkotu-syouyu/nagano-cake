@@ -11,11 +11,8 @@
   <div class="row">
     <div class="mx-auto">
       <%= @product.each do |product| %>
-        <h4>Image</h4>
         <%= product.image_id %>
-        <h4>商品名</h4>
         <%= product.name %>
-        <h4>¥0.000</h4>
         <%= product.price %>
       <% end %>
     </div>
