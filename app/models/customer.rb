@@ -12,13 +12,13 @@ class Customer < ApplicationRecord
   #     super && (self.is_customer_status == false)
   # end
 
-  validates :last_name,  presence: true
-  validates :first_name, presence: true
-  validates :last_name_kana,  presence: true
-  validates :first_name_kana, presence: true
-  validates :telephone_number, presence: true
-  validates :postal_code,  presence: true
-  validates :address, presence: true
+  # validates :last_name,  presence: true
+  # validates :first_name, presence: true
+  # validates :last_name_kana,  presence: true
+  # validates :first_name_kana, presence: true
+  # validates :telephone_number, presence: true
+  # validates :postal_code,  presence: true
+  # validates :address, presence: true
 
   # 住所自動入力(記述間違えてるかもです)
   # include JpPrefecture

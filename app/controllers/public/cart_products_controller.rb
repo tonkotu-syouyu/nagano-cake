@@ -1,6 +1,7 @@
 class Public::CartProductsController < ApplicationController
   before_action :setup_cart_product!, only: [:create_product, :update_product, :delete_product]
 
+
   def index
     @cart_products = current_cart.cart_products
   end
@@ -19,7 +20,12 @@ class Public::CartProductsController < ApplicationController
   end
 
   def create
-    @cart_products = current_cart.cart_products
+    if @cart_product.blank?
+      @cart_product = current_cart.cart_products.build(product_id: params[:product_id])
+    end
+    @cart_product.quantity += params[:amount].to_i
+    @cart_product.save
+    redirect_to current_cart
   end
 
   private

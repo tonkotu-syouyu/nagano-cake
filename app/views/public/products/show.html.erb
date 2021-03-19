@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-4">
-      <%= attachment_image_tag @product, :image_id, size: "300x300", fallback: "no_image.jpeg" %>
+      <%= attachment_image_tag @product, :image, size: "300x250", fallback: "no_image.jpeg" %>
     </div>
     <div class="col-lg-8">
       <h2><%= @product.name %></h2>
       <p><%= @product.introduction %></p>
-      <h3>
+      <h4>
         <%= @product.price %>
         <p>(税込)</p>
-      </h3>
-      <%= form_with model: @cart_product do |f| %>
-        <%= f.select :amount, ["1", "1"],["2","2"],["3","3"], include_blank: "個数選択" %>
-      <% end %>
-      <%= button_to 'カートに入れる', public_cart_products_path, class: 'btn btn-success' %>
+      </h4>
+      <%# form_with model: @cart_product, url:public_cart_products_path do |f| %>
+        <%# f.select :amount, [1,2,3,4,5,6,7,8,9,10] include_blank: "個数選択" %>
+      <%# end %>
+      <%= button_to 'カートに入れる', public_cart_products_path(product_id: @product.id), class: 'btn btn-success' %>
     </div>
   </div>
 </div>

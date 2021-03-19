@@ -1,1 +1,35 @@
-
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <h4>注文情報確認</h4>
+    </div>
+    <div class="mx-auto">
+      <% @order.product each do |product| %>
+        <table>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+          <tr>
+            <td><%= order.product.name %></td>
+            <td><%= order.product.price %></td>
+            <td><%= order.product.amount %></td>
+            <td><%= order.product.total_price %></td>
+          </tr>
+        </table>
+        <table>
+          <tr><th>送料</th><td></td></tr>
+          <tr><th>商品合計</th><td></td></tr>
+          <tr><th>請求金額</th><td></td></tr>
+        </table>
+      <% end %>
+    </div>
+    <div class="col-lg-4">
+      <h5>支払い方法</h5>
+      <h5>お届け先</h5>
+    </div>
+    <%= button_to "注文を確定する", public_orders_complete_path, class: 'btn btn-success' %>
+  </div>
+</div>
