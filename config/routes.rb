@@ -16,10 +16,11 @@ Rails.application.routes.draw do
     resources :products, only:[:index, :show]
     #resources :registrations, only:[:new, :create]
     #resources :sessions, only:[:new, :create, :destroy]
+    patch 'customers/withdraw', to: 'customers#withdraw'
     resources :customers, only:[:edit, :update]
       get '/customers/my_page', to: 'customers#show'
       get 'customers/unsubscribe'
-      patch 'customers/withdraw'
+      # put 'customers/withdraw', to: 'customers#withdraw'
     resources :cart_products, only:[:index, :update, :destroy, :create]
       delete 'cart_products/destroy_all'
     resources :orders, only:[:new, :create, :index, :show]
