@@ -25,7 +25,9 @@ class Customer < ApplicationRecord
   # jp_prefecture :address
 
   # def address
-  #   JpPrefecture::Address.find(code: address).try(:name)
+
+  # JpPrefecture::Address.find(code: address).try(:name)
+
   # end
 
   # def address=(prefecture_name)

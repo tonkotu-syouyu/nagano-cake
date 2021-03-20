@@ -1,6 +1,8 @@
 class Admin::CustomersController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
-    @customers = Customer.all.page(params[:page]).per(10)
+    @customers = Customer.page(params[:page]).reverse_order
   end
 
   def show
@@ -14,21 +16,16 @@ class Admin::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      flash[:success] = "更新完了"
-      redirect_to admin_customers_path(@customer)
+      redirect_to admin_customer_path(@customer.id), notice: '会員情報を更新しました。'
     else
-      flash[:warning] = "入力内容を確認してください"
       render :edit
     end
   end
 
-   private
-  	def costomer_params
-  		params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :telephone_numder, :email, :is_deleted)
-  	end
-<<<<<<< HEAD
-  
-=======
+  private
 
->>>>>>> origin/develop
+  def customer_params
+    params.require(:customer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :address, :telphone_number, :email, :admittion_status)
+  end
+
 end
