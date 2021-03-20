@@ -1,1 +1,74 @@
-<h2>会員詳細</h2>
+<p id="notice"></p>
+  <div class="container">
+
+    <h2>マイページ</h2>
+
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th width="200">
+            <h5>登録情報</h5>
+          </th>
+          <td><%= link_to "編集する", edit_public_customer_path(@customer.id), class: 'btn btn-success' %></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table border="6" width="500">
+      <tbody>
+        <tr>
+          <th class="table-active">氏名</th>
+          <td class="customer-name"><%= @customer.last_name %><%= @customer.first_name %></td>
+        </tr>
+        <tr>
+          <th class="table-active">カナ</th>
+          <td class="customer-name-kana"><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td
+        </tr>
+        <tr>
+          <th class="table-active">郵便番号</th>
+          <td class="customer-postal-code"><%= @customer.postal_code %></td>
+        </tr>
+        <tr>
+          <th class="table-active">住所</th>
+          <td class="customer-address"><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th class="table-active">電話番号</th>
+          <td class="customer-telephone-number"><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <th class="table-active">メールアドレス</th>
+          <td class="customer-email"><%= @customer.email %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th width="200">
+            <h5>配送先</h5>
+          </th>
+          <td><%= link_to "一覧を見る", public_addresses_path(@customer.id), class: "btn btn-primary" %></td>
+        </tr>
+        <tr>
+          <th width="200">
+            <h5>注文履歴</h5>
+          </th>
+          <td><%= link_to "一覧を見る", public_order_path(@customer.id), class: "btn btn-primary" %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
