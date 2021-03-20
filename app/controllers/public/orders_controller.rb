@@ -6,6 +6,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @cart_product = CartProduct.find(params[:id])
   end
 
   def complete

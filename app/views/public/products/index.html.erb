@@ -12,7 +12,9 @@
           <%= attachment_image_tag product, :image, size: "200x150", fallback: "no_image.jpeg" %><br>
         <% end %>
         <%= product.name %><br>
-        <%= product.price %><br>
+        <%# number_to_currency(product.price, unit: "￥", strip_insignificant_zeros: true)
+          <%= product.price %><br>
+        <%# end %>
       </div>
     <% end %>
   </div>

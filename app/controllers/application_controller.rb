@@ -2,16 +2,16 @@ class ApplicationController < ActionController::Base
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
 
-  helper_method :current_cart
+  # helper_method :current_cart
 
-  def current_cart
-    if session[:cart_product_id]
-      @cart_product = CartProduct.find(session[:cart_product_id])
-    else
-      @cart_product = CartProduct.create
-      session[:cart_product_id] = @cart_product.id
-    end
-  end
+  # def current_cart
+  #   if session[:cart_product_id]
+  #     @cart_product = CartProduct.find(session[:cart_product_id])
+  #   else
+  #     @cart_product = CartProduct.create
+  #     session[:cart_product_id] = @cart_product.id
+  #   end
+  # end
 
 
   # protected

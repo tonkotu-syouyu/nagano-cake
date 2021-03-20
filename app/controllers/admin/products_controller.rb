@@ -17,7 +17,7 @@ before_action :authenticate_admin!,only: [:create,:edit,:update,:index, :show, :
     @genre = Genre.new
     if @product.save
       flash[:success] = "商品登録完了しました"
-      redirect_to admin_products_path(@product)
+      redirect_to admin_products_path
     else
       flash[:warning] = "商品名を入力してくだたい"
       render :new
@@ -35,7 +35,7 @@ before_action :authenticate_admin!,only: [:create,:edit,:update,:index, :show, :
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      redirect_to admin_products_path(@product)
+      redirect_to admin_products_path
       flash[:success] = "商品情報を更新しました"
     else
       render :edit

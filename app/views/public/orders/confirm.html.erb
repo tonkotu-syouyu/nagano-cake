@@ -4,32 +4,36 @@
       <h4>注文情報確認</h4>
     </div>
     <div class="mx-auto">
-      <% @order.product each do |product| %>
-        <table>
+      <table>
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+        <% @order.cart_product each do |cart_product| %>
           <tr>
-            <th>商品名</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
+            <td><%= order.cart_product.name %></td>
+            <td><%= order.cart_product.price %></td>
+            <td><%= order.cart_product.amount %></td>
+            <td><%= order.cart_product.total_price %></td>
           </tr>
-          <tr>
-            <td><%= order.product.name %></td>
-            <td><%= order.product.price %></td>
-            <td><%= order.product.amount %></td>
-            <td><%= order.product.total_price %></td>
-          </tr>
-        </table>
-        <table>
-          <tr><th>送料</th><td></td></tr>
-          <tr><th>商品合計</th><td></td></tr>
-          <tr><th>請求金額</th><td></td></tr>
-        </table>
-      <% end %>
+        <% end %>
+      </table>
+      <table>
+        <tr><th>送料</th><td></td></tr>
+        <tr><th>商品合計</th><td></td></tr>
+        <tr><th>請求金額</th><td></td></tr>
+      </table>
     </div>
     <div class="col-lg-4">
       <h5>支払い方法</h5>
+      <%= @order.payment_method %>
       <h5>お届け先</h5>
+      <%= @order.postal_code %>
+      <%= @order.address %>
+      <%= @order.name %>
     </div>
-    <%= button_to "注文を確定する", public_orders_complete_path, class: 'btn btn-success' %>
+    <%= link_to "注文を確定する", public_orders_complete_path, class: 'btn btn-success' %>
   </div>
 </div>
