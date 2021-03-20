@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_03_15_132757) do
     t.integer "price"
     t.text "introduction"
     t.string "image_id"
-    t.integer "genre_id"
+     t.integer "genre_id"
     t.index ["genre_id"], name: "index_products_on_genre_id"
   end
 

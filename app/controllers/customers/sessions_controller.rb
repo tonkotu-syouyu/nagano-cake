@@ -2,7 +2,7 @@
 
 class Customers::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  
+
   def after_sign_out_path(resource)
     root_path
   end
