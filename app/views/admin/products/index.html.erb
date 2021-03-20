@@ -1,5 +1,5 @@
 <h2 class="index-title">商品一覧</h2>
-<%= button_to "+", {controller: 'products', action: 'new'}, method: :get %>
+<div class="button"><%= link_to "+", new_admin_product_path %></div>
 <table class="table">
   <thead>
     <tr>
