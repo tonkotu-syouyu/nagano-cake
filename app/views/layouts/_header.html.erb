@@ -15,7 +15,7 @@
           <!-- 管理者がログインしている時 -->
           <li class="nav-list-item"><%= link_to "商品一覧", admin_products_path %><i class="fas fa-pizza-slice"></i></li>
           <li class="nav-list-item"><%= link_to "会員一覧", admin_customers_path %><i class="fas fa-users"></i></li>
-          <li class="nav-list-item"><%= link_to "注文履歴一覧", admin_orders_path %><i class="fas fa-sort-amount-down-alt"></i></li>
+          <li class="nav-list-item"><%= link_to "注文履歴一覧", admin_root_path %><i class="fas fa-sort-amount-down-alt"></i></li>
           <li class="nav-list-item"><%= link_to "ジャンル一覧", admin_genres_path %><i class="fas fa-cookie-bite"></i></li>
           <li class="nav-list-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %><i class="fas fa-sign-out-alt"></i></li>
 
