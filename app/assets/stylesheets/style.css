@@ -1,5 +1,9 @@
+header, body, footer {
+  font-family: "M PLUS Rounded 1c", cursive, sans-serif;
+}
+
 .header {
-  background-color: beige;
+  background-color: lightsalmon;
   width: 100%;
   height: 60px;
 }
@@ -9,7 +13,7 @@
 }
 
 .button {
-  background-color: darkturquoise;
+  background-color: gold;
   color: white;
   width: 40px;
   height: 40px;
@@ -30,19 +34,27 @@
   display: inline-block;
   margin: 0 20px;
   padding: auto;
+  font-family: "M PLUS Rounded 1c", cursive, sans-serif;
 }
 
 .index-title {
-  background-color: salmon;
+  background-color: lightseagreen;
   text-align: center;
   color: white;
   text-decoration: none;
+  font-family: "M PLUS Rounded 1c", cursive, sans-serif;
+}
+
+.new-form-table, .table, .text-right, .col-xs-4, .edit-genre-form, .show-title {
+  font-family: "M PLUS Rounded 1c", cursive, sans-serif;
 }
 
 .footer {
-  background-color: beige;
+  background-color: lightsalmon;
   width: 100%;
   height: 30px;
-  color: salmon;
+  color: white;
   text-align: center;
+  font-family: "M PLUS Rounded 1c", cursive, sans-serif;
 }
+
