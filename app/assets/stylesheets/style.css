@@ -38,3 +38,11 @@
   color: white;
   text-decoration: none;
 }
+
+.footer {
+  background-color: beige;
+  width: 100%;
+  height: 30px;
+  color: salmon;
+  text-align: center;
+}
