@@ -11,7 +11,7 @@ class Admin::GenresController < ApplicationController
       flash[:success] = "登録完了しました"
       redirect_to admin_genres_path
     else
-      flash[:warning] = "入力内容をご確認ください"
+      flash.now[:warning] = "入力内容をご確認ください"
       render :index
     end
   end

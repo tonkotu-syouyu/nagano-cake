@@ -1,14 +1,15 @@
 
 Rails.application.routes.draw do
 
+get '/search' => 'search#search'
 
-
+  get 'search/search'
   devise_for :customers, controllers: {
     sessions: 'customers/sessions',
     passwords: 'customers/passwords',
     registrations: 'customers/registrations'
   }
-  
+
   namespace :public, path: "" do
 
     root to: 'homes#top'
@@ -45,7 +46,7 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders, only: [:show, :update]
+    resources :orders, only: [:show, :update, :index]
     resources :orders_details, only: [:update]
   end
 

@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
   has_many :addresses, dependent: :destroy
 
   # def active_for_authentication?
+
       # super && (self.is_customer_status == false)
   # end
 
@@ -25,7 +26,9 @@ class Customer < ApplicationRecord
   # jp_prefecture :address
 
   # def address
-    # JpPrefecture::Address.find(code: address).try(:name)
+
+  # JpPrefecture::Address.find(code: address).try(:name)
+
   # end
 
   # def address=(prefecture_name)

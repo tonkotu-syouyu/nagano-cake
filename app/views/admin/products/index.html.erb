@@ -1,11 +1,12 @@
 <h2 class="index-title">商品一覧</h2>
-<button type="button" class="btn btn-default btn-lg">+</button>
+<div class="button"><%= link_to "+", new_admin_product_path %></div>
 <table class="table">
   <thead>
     <tr>
       <th>商品ID</th>
       <th>商品</th>
       <th>商品名</th>
+      <th>商品説明</th>
       <th>税抜価格</th>
       <th>ジャンル</th>
       <th>ステータス</th>
@@ -15,12 +16,19 @@
   <tbody>
     <tr>
       <td><%= product.id %></td>
-      <td><%= attachment_image_tag product, :image_id, size: "60x60", fallback: "no_image.jpg"%></td>
-      <td><%= link_to product.name, admin_product_path(@product) %></td>
+      <td><%= attachment_image_tag product, :image, size: "60x60", fallback: "no_image.jpeg"%></td>
+      <td><%= link_to product.name, admin_product_path(product) %></td>
+      <td><%= product.introduction %></td>
       <td><%= product.price %></td>
-      <td><%= product.genre_id %></td>
-      <td><%= product.is_active %></td>
+      <td><%= product.genre.name %></td>
+      <td><% if product.is_active == false %>
+      販売中
+      <% else %>
+      販売停止中
+      <% end %>
+      </td>
     </tr>
   <% end %>
   </tbody>
 </table>
+<%= paginate @products %>

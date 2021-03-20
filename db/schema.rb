@@ -78,8 +78,18 @@ ActiveRecord::Schema.define(version: 2021_03_15_132757) do
     t.integer "price"
     t.text "introduction"
     t.string "image_id"
-    t.integer "genre_id_id"
-    t.index ["genre_id_id"], name: "index_products_on_genre_id_id"
+     t.integer "genre_id"
+    t.index ["genre_id"], name: "index_products_on_genre_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
