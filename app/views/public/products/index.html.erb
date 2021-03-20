@@ -1,16 +1,22 @@
 <div class="container">
   <div class="row">
-    <%# @products.each do |product| %>
-    <div class="col-md-4">
+    <div class="col-lg-4">
       <h2>商品一覧</h2>
-      <p>Image</p>
-      <%# image_tag product.image_id %>
-      <p>商品名</p>
-      <%# product.name %>
-      <p>¥0,000</p>
-      <%# product.price %>
+      <p>(全<%= @products.count %>件)</p>
     </div>
-    <%# end %>
+  </div>
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-lg-4">
+        <%= link_to public_product_path(product.id) do %>
+          <%= attachment_image_tag product, :image, size: "200x150", fallback: "no_image.jpeg" %><br>
+        <% end %>
+        <%= product.name %><br>
+        <%# number_to_currency(product.price, unit: "￥", strip_insignificant_zeros: true)
+          <%= product.price %><br>
+        <%# end %>
+      </div>
+    <% end %>
   </div>
 </div>
 
