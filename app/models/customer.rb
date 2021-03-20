@@ -32,6 +32,7 @@ class Customer < ApplicationRecord
 
   # def address=(prefecture_name)
   #   self.address = JpPrefecture::Address.find(name: address).code
+
   # end
 
 end
