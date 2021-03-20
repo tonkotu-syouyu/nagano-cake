@@ -1,7 +1,7 @@
 class Admin::ProductsController < ApplicationController
 before_action :authenticate_admin!,only: [:create,:edit,:update,:index, :show, :new]
   def index
-    @products = Product.all.page(params[:page]).per(10)
+    @products = Product.all.order(updated_at: :desc).page(params[:page]).per(10)
     @product = Product.new
     @genre = Genre.all
   end
@@ -19,7 +19,7 @@ before_action :authenticate_admin!,only: [:create,:edit,:update,:index, :show, :
       flash[:success] = "商品登録完了しました"
       redirect_to admin_products_path(@product)
     else
-      flash.now[:warning] = "商品名を入力してくだたい"
+      flash.now[:warning] = "入力不備があります"
       render :new
     end
   end
