@@ -19,7 +19,7 @@ class Customer < ApplicationRecord
   # validates :telephone_number, presence: true
   # validates :postal_code,  presence: true
   # validates :address, presence: true
-  
+
   # 住所自動入力(記述間違えてるかもです)
   # include JpPrefecture
   # jp_prefecture :address
