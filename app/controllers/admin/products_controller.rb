@@ -1,17 +1,22 @@
 class Admin::ProductsController < ApplicationController
 before_action :authenticate_admin!,only: [:create,:edit,:update,:index, :show, :new]
   def index
-
+    @products = Product.all
+    @product = Product.new
+    @genre = Genre.all
   end
 
   def new
     @products = Product.all
     @product = Product.new
+    @genre = Genre.new
   end
 
   def create
     @product = Product.new(product_params)
+    @genre = Genre.new
     if @product.save
+      flash[:success] = "商品登録完了しました"
       redirect_to admin_products_path(@product)
     else
       flash[:warning] = "商品名を入力してくだたい"
@@ -41,6 +46,6 @@ before_action :authenticate_admin!,only: [:create,:edit,:update,:index, :show, :
   private
 
   def product_params
-    params.require(:product).permit(:genre_is, :name, :itroduction, :price, :image_id, :is_active)
+    params.require(:product).permit(:genre_id, :name, :introduction, :price, :image, :is_active)
   end
 end

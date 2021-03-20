@@ -25,11 +25,11 @@ class Customer < ApplicationRecord
   # jp_prefecture :address
 
   # def address
-    # JpPrefecture::Address.find(code: address).try(:name)
+  #   JpPrefecture::Address.find(code: address).try(:name)
   # end
 
   # def address=(prefecture_name)
-    # self.address = JpPrefecture::Address.find(name: address).code
+  #   self.address = JpPrefecture::Address.find(name: address).code
   # end
 
 end
