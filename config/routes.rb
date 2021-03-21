@@ -43,7 +43,9 @@ get '/search' => 'search#search'
     root 'homes#top'
     get 'homes/top'
 
+
     #resources :sessions, only: [:new, :create, :destroy]
+
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
