@@ -1,17 +1,48 @@
-<h2>ショッピングカート</h2>
-<table>
-  <tr>
-    <th>商品名</th>
-    <th>単価(税込)</th>
-    <th>数量</th>
-    <th>小計</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td><%= product.name %></td>
-    <td><%= product.price %></td>
-    <td><%= product.amount %></td>
-    <td></td>
-    <td><%= link_to "削除する", public_cart_products_path, method: :delete, class: 'btn btn-danger' %></td>
-  </tr>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <h4>ショッピングカート</h4>
+    </div>
+    <div class="col-lg-8">
+      <div class="float-right test-box">
+        <%= link_to 'カートを空にする', public_cart_products_destroy_all_path, method: :delete_all, class: 'btn btn-danger btn-sm' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th></th>
+      </tr>
+      <% @cart_products.each do |cart_product| %>
+        <tr>
+          <td><%= attachment_image_tag cart_product.product, :image, size: "90x60", fallback: "no_image.jpeg" %><%= cart_product.product.name %></td>
+          <td><%= number_with_delimiter(cart_product.product.addTax.round, :delimiter => ',') %></td>
+          <td><%= cart_product.amount %></td>
+          <td text-align:center;><font size="4"><%= number_with_delimiter(cart_product.total_price.round, :delimiter => ',') %></font></td>
+          <td><%= link_to "削除する", public_cart_product_path(cart_product), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+        </tr>
+    	<% end %>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <%= link_to '買い物を続ける', public_products_path, class: 'btn btn-primary btn-sm' %>
+    </div>
+    <div class="col-lg-8">
+      <div class="float-right">
+        <table class="table">
+          <tr><th>合計金額</th><td><%# (@cart_product.total_sum).to_i %></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class=mx-auto>
+      <%= link_to '情報入力に進む', new_public_order_path, class: 'btn btn-success' %>
+  </div>
+</div>
