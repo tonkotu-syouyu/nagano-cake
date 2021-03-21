@@ -13,7 +13,7 @@
       <div class="mx-auto">
         <%= attachment_image_tag product, :image, size: "200x150", fallback: "no_image.jpeg" %><br>
         <%= product.name %><br>
-        <%= product.price %><br>
+        ¥<%= number_with_delimiter(product.price, :delimiter => ',') %><br>
       </div>
     <% end %>
   </div>

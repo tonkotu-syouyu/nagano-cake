@@ -1,5 +1,6 @@
 class Public::CartProductsController < ApplicationController
   before_action :setup_cart_product!, only: [:create_product, :update_product, :delete_product]
+  before_action :authenticate_customer!
 
 
   def index
