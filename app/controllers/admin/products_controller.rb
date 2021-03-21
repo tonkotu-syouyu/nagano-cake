@@ -13,8 +13,9 @@ before_action :authenticate_admin!,only: [:create,:edit,:update,:index, :show, :
   end
 
   def create
+    # byebug
     @product = Product.new(product_params)
-    @genre = Genre.new
+    # @genre = Genre.new
     if @product.save
       flash[:success] = "商品登録完了しました"
       redirect_to admin_products_path(@product)
