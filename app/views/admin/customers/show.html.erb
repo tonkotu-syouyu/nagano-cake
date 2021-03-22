@@ -47,11 +47,11 @@
         <tr>
           <th>会員ステータス</th>
           <td>
-            <% if @customer == "validity" %>
-                <span class="label label-primary admittion_status_label">退会</span>
-              <% else %>
-                <span class="label label-danger admittion_status_label">有効</span>
-              <% end %>
+            <% if @customer.is_deleted %>
+              <span class="label label-primary is_deleted_label">退会</span>
+            <% else %>
+              <span class="label label-danger is_deleted_label">有効</span>
+            <% end %>
           </td>
         </tr>
         </table>

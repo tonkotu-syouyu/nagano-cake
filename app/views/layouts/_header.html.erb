@@ -5,8 +5,8 @@
       <ul class="nav-list">
       <% if customer_signed_in? %>
           <!--customerがログインしている時 -->
-          ようこそ、<%= current_customer.first_name %>
-                <%= current_customer.last_name %>さん！
+          ようこそ、<%= current_customer.last_name %>
+                <%= current_customer.first_name %>さん！
 
           <li class="nav-list-item"><%= link_to "マイページ", public_customers_my_page_path %><i class="fas fa-address-card"></i></li>
           <li class="nav-list-item"><%= link_to "商品一覧", public_products_path %><i class="fas fa-pizza-slice"></i></li>
