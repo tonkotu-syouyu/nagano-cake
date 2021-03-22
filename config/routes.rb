@@ -33,9 +33,9 @@ Rails.application.routes.draw do
 
 
   devise_for :admins, controllers: {
-    sessinons: 'admins/sessions',
-    passwords: 'admins/passwords',
-    registrations: 'admins/registrations'
+     sessinons: 'admins/sessions',
+     passwords: 'admins/passwords',
+     registrations: 'admins/registrations'
   }
 
    # admin
@@ -43,7 +43,6 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'homes/top'
 
-    resources :sessions, only: [:new, :create, :destroy]
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]

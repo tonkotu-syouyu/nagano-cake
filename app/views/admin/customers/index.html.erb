@@ -21,7 +21,8 @@
             <td class="text-left">
               <%= link_to admin_customer_path(customer), class: "btn-link"  do %>
                 <i class="far fa-user"></i>
-                <%= customer.first_name + customer.last_name %>
+                <%= customer.first_name %>
+                <%= customer.last_name %>
               <% end %>
             </td>
             <td class="text-left">

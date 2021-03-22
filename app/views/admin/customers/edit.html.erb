@@ -1,6 +1,7 @@
 <div class="container">
-  <h2 class="index-title">
-      <%= @customer.first_name + "　" + @customer.last_name %>さんの会員情報編集
+  <h2 class="head-line title_h2">
+      <%= @customer.first_name %>
+      <%= @customer.last_name %>さんの会員情報編集
       </h2>
 
   <%= form_with(model: @customer, url:admin_customer_path, local: true ,method: :patch) do |f| %>

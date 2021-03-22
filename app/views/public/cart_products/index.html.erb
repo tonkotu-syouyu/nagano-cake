@@ -19,14 +19,13 @@
         <th></th>
       </tr>
       <% @cart_products.each do |cart_product| %>
-
-      <tr>
-        <td><%= attachment_image_tag cart_product.product, :image, size: "90x60", fallback: "no_image.jpeg" %><%= cart_product.product.name %></td>
-        <td><%= cart_product.product.addTax %></td>
-        <td><%= cart_product.amount %></td>
-        <td text-align:center;><font size="4"><%= cart_product.total_price %></font></td>
-        <td><%= link_to "削除する", public_cart_product_path(cart_product), method: :delete, class: 'btn btn-danger btn-sm' %></td>
-      </tr>
+        <tr>
+          <td><%= attachment_image_tag cart_product.product, :image, size: "90x60", fallback: "no_image.jpeg" %><%= cart_product.product.name %></td>
+          <td><%= number_with_delimiter(cart_product.product.addTax.round, :delimiter => ',') %></td>
+          <td><%= cart_product.amount %></td>
+          <td text-align:center;><font size="4"><%= number_with_delimiter(cart_product.total_price.round, :delimiter => ',') %></font></td>
+          <td><%= link_to "削除する", public_cart_product_path(cart_product), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+        </tr>
     	<% end %>
     </table>
   </div>

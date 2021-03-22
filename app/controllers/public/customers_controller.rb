@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
 
   def show
     @customer = current_customer
@@ -13,7 +14,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     @customer.update(customer_params)
-    redirect_to public_customers_my_page_path(@customer)
+    redirect_to public_customers_my_page_path(current_customer)
   end
 
   def unsubscribe

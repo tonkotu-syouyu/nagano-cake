@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
 
   def new
     @order = Order.new
@@ -6,13 +7,20 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @cart_product = CartProduct.find(params[:id])
+    @cart_products = current_customer.cart_products
+    @order = Order.new
+    @order.payment_method = params[:payment_method]
+    @order.postal_code = current_customer.postal_code
+    @order.address = current_customer.address
+
   end
 
   def complete
   end
 
   def create
+
+
   end
 
   def index
