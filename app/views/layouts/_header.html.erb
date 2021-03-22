@@ -13,12 +13,12 @@
             <li class="nav-list-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "fas fa-sign-out-alt" %></li>
           </div>
           <div class="search">
-            <%= form_with url: search_path, method: :get, local: :true do |f| %>
-            <%= f.select :range, options_for_select([['Customer'], ['Product'], ['Genre']]) %>
-            <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
-            <%= f.text_field :word %>
-            <%= f.submit "検索" %>
-            <% end %></div>
+            <%= form_with url: search_path, method: :get, local: true do |f| %>
+            <%= f.text_field 'search[value]', size: "26x4" %>
+            <span class="search-button col-xs-12 text-right">
+              <%= f.select 'search[how]', options_for_select({ "部分一致" => "partical", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "match" }) %>
+              <%= f.submit :"検索" %>
+                  <% end %></div>
         <% elsif admin_signed_in? %>
           <!-- 管理者がログインしている時 -->
           <div class="menu">
@@ -29,12 +29,12 @@
             <li class="nav-list-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "fas fa-sign-out-alt" %></li>
           </div>
           <div class="search">
-            <%= form_with url: search_path, method: :get, local: :true do |f| %>
-            <%= f.select :range, options_for_select([['会員'], ['商品'],['ジャンル']]) %>
-            <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
-            <%= f.text_field :word %>
-            <%= f.submit "検索" %>
-            <% end %></div>
+            <%= form_with url: search_path, method: :get, local: true do |f| %>
+              <%= f.text_field 'search[value]', size: "26x4" %>
+              <span class="search-button col-xs-12 text-right">
+                <%= f.select 'search[how]', options_for_select({ "部分一致" => "partical", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "match" }) %>
+                <%= f.submit :"検索" %>
+                    <% end %></div>
         <% else %>
           <!-- ログインしていない時 -->
           <div class="menu">

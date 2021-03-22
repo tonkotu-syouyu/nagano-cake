@@ -11,23 +11,30 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300 rel="stylesheet">
     <script src="https://kit.fontawesome.com/f3294f4f4d.js" crossorigin="anonymous"></script>
-    
+
     <link rel="stylesheet" href="style.css" />
-  
+
   </head>
     <body id="wrapper" style="background-color: white; font-family: 'Alegreya Sans SC', sans-serif; color: #000000;">
-    <!-- ヘッダー -->
-    <div class="header">
-      <%= render "layouts/header" %>
-    </div>
-    <!-- Body部分 -->
-    <div class="container" style="margin-top: 20px;">
-    <% flash.each do |message_type, message| %>
-      <%= message %>
-    <% end %>
-    <%= yield %>
-    </div>
-    <!-- Footer -->
-    <%= render "layouts/footer" %>
+      <div class="big-container">
+        <!-- ヘッダー -->
+        <div class="header">
+          <%= render "layouts/header" %>
+        </div>
+        <!-- Body部分 -->
+        <div class="body">
+          <div class="container" style="margin-top: 20px;">
+            <% flash.each do |message_type, message| %>
+              <%= message %>
+            <% end %>
+            <%= yield %>
+          </div>
+          <div class="push"></div>
+        </div>
+        <div class="footer">
+          <!-- フッター -->
+          <%= render "layouts/footer" %>
+        </div>
+      </div>
     </body>
 </html>
