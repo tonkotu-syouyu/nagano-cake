@@ -19,7 +19,11 @@ class Customer < ApplicationRecord
    validates :telephone_number, presence: true
    validates :postal_code,  presence: true
    validates :address, presence: true
-  
+
+   def full_name
+    self.last_name + " " + self.first_name
+   end
+
   # 住所自動入力(記述間違えてるかもです)
   # include JpPrefecture
   # jp_prefecture :address

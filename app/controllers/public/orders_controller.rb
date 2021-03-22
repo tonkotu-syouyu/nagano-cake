@@ -14,6 +14,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:address_option] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
+      @order.name = current_customer.full_name
     #登録済み住所から選択した時
     elsif params[:order][:address_option] == "1"
       @order_address = Address.find(params[:order][:selected_address])
