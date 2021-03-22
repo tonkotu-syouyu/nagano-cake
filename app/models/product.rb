@@ -12,4 +12,5 @@ class Product < ApplicationRecord
   def addTax
    taxed_money = self.price*1.1
   end
+
 end
