@@ -1,0 +1,73 @@
+<p id="notice"></p>
+  <div class="container">
+    <% if @address.errors.any? %>
+      <%= @address.errors.count %>件のエラーが発生しました
+      <% @address.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+    
+    <%= form_with model:@address, url: public_addresses_path, local:true do |f| %>
+      <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th colspan="3">
+                <h3>配達先登録/一覧</h3>
+              </th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th width="200">郵便番号(ハイフンなし)</th>
+              <td><%= f.text_field :postal_code, class: "form-control" %></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th width="200">住所</th>
+              <td colspan="3"><%= f.text_field :address, class: "form-control" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th width="200">宛名</th>
+              <td><%= f.text_field :name, class: "form-control" %></td>
+              <td></td>
+              <td><%= f.submit '新規登録', class: 'btn btn-success' %></td>
+            </tr>
+          </tbody>
+      </table>
+    <% end %>
+    
+  
+    <table border="6" width="500">
+      <thead>
+        <tr>
+          <th class="table-active">郵便番号</th>
+          <th class="table-active">住所</th>
+          <th class="table-active">宛名</th>
+          <th class="table-active"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @addresses.each do |address| %>
+          <tr>
+            <th><%= address.postal_code %></th>
+            <th><%= address.address %></th>
+            <th><%= address.name %></th>
+            <td><%= link_to "編集する", edit_public_address_path(address), class: "btn btn-sm btn-success" %> <%= link_to "削除する", public_address_path(address.id), method: :delete, "data-confirm" => "本当に削除しますか?", class: 'btn btn-sm btn-danger' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>

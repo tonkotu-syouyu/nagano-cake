@@ -1,0 +1,45 @@
+<div class="container">
+  <h4>注文情報確認</h4>
+  <div class="row">
+    <div class="col-lg-8">
+      <table class="table">
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+        <% @cart_products.each do |cart_product| %>
+          <tr>
+            <td><%= cart_product.product.name %></td>
+            <td><%= number_with_delimiter(cart_product.product.addTax.round, :delimiter => ',') %></td>
+            <td><%= cart_product.amount %></td>
+            <td><%= number_with_delimiter(cart_product.total_price.round, :delimiter => ',') %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-lg-4">
+      <table class="table">
+        <tr><th>送料</th><td></td></tr>
+        <tr><th>商品合計</th><td></td></tr>
+        <tr><th>請求金額</th><td></td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="payment_method">
+      <h5>支払い方法</h5>
+      <%= @order.payment_method %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="address">
+      <h5>お届け先</h5>
+      <%= @order.postal_code %>
+      <%= @order.address %>
+      <%= @order.name %>
+    </div> 
+  </div>
+  <%= link_to "注文を確定する", public_orders_complete_path, class: 'btn btn-success' %>
+</div>

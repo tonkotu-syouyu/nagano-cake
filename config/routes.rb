@@ -1,14 +1,15 @@
 
 Rails.application.routes.draw do
 
+get '/search' => 'search#search'
 
-
+  get 'search/search'
   devise_for :customers, controllers: {
     sessions: 'customers/sessions',
     passwords: 'customers/passwords',
     registrations: 'customers/registrations'
   }
-  
+
   namespace :public, path: "" do
 
     root to: 'homes#top'
@@ -16,10 +17,11 @@ Rails.application.routes.draw do
     resources :products, only:[:index, :show]
     #resources :registrations, only:[:new, :create]
     #resources :sessions, only:[:new, :create, :destroy]
+    patch 'customers/withdraw', to: 'customers#withdraw'
     resources :customers, only:[:edit, :update]
       get '/customers/my_page', to: 'customers#show'
       get 'customers/unsubscribe'
-      patch 'customers/withdraw'
+      # put 'customers/withdraw', to: 'customers#withdraw'
     resources :cart_products, only:[:index, :update, :destroy, :create]
       delete 'cart_products/destroy_all'
     resources :orders, only:[:new, :create, :index, :show]
@@ -31,9 +33,9 @@ Rails.application.routes.draw do
 
 
   devise_for :admins, controllers: {
-    sessinons: 'admins/sessions',
-    passwords: 'admins/passwords',
-    registrations: 'admins/registrations'
+     sessinons: 'admins/sessions',
+     passwords: 'admins/passwords',
+     registrations: 'admins/registrations'
   }
 
    # admin
@@ -41,11 +43,13 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'homes/top'
 
-#     resources :sessions, only: [:new, :create, :destroy]
+
+    #resources :sessions, only: [:new, :create, :destroy]
+
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders, only: [:show, :update]
+    resources :orders, only: [:show, :update, :index]
     resources :orders_details, only: [:update]
   end
 
