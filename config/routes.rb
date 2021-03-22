@@ -1,7 +1,8 @@
 
 Rails.application.routes.draw do
 
-get '/search' => 'search#search'
+ get 'search' => "searches#search"
+
 
   get 'search/search'
   devise_for :customers, controllers: {
@@ -42,9 +43,6 @@ get '/search' => 'search#search'
   namespace :admin do
     root 'homes#top'
     get 'homes/top'
-
-
-    #resources :sessions, only: [:new, :create, :destroy]
 
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
