@@ -1,0 +1,83 @@
+ <% if @range == "customer" %>
+  <h2>会員検索結果 "<%= @range %>"</h2>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th></th>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+  <% @coutomers.each do |costomer| %>
+    <tbody>
+      <tr>
+        <th><%= customer.id %></th>
+        <th><%= link_to admin_customer_path(customer), class: "btn-link"  do %>
+            <i class="far fa-user"></i>
+            <%= customer.first_name + customer.last_name %>
+          <% end %></th>
+        <th><%= customer.email %></th>
+        <th><% if @customer == "validity" %>
+            <span class="label label-primary admittion_status_label">退会</span>
+          <% else %>
+            <span class="label label-danger admittion_status_label">有効</span>
+          <% end %></th>
+      </tr>
+    </tbody>
+  <% end %>
+  <% elsif @range == "product" %>
+  <h2>商品検索結果 '<%= @range %>'</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>商品ID</th>
+          <th>商品</th>
+          <th>商品名</th>
+          <th>商品説明</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <% @products.each do |product| %>
+      <tbody>
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= attachment_image_tag product, :image, size: "60x60", fallback: "no_image.jpeg"%></td>
+          <td><%= link_to product.name, admin_product_path(product) %></td>
+          <td><%= product.introduction %></td>
+          <td><%= product.price %></td>
+          <td><%= product.genre.name %></td>
+          <td><% if product.is_active == false %>
+          販売中
+          <% else %>
+          販売停止中
+          <% end %>
+      </td>
+        </tr>
+      </tbody>
+      <% end %>
+      <% else @range == "genre" %>
+  <h2>ジャンル検索結果 '<%= @range %>'</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>ジャンル名</th>
+        </tr>
+      </thead>
+      <% @genres.each do |genre| %>
+      <tbody>
+        <tr>
+          <th></th>
+          <th>
+            <%= genre.name %>
+          </th>
+        </tr>
+      </tbody>
+      <% end %>
+    <% end %>
+    </table>

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
-        <h2>配送先登録/登録一覧</h2>
+        <h2 class="index-title">配送先登録/登録一覧</h2>
         <%= form_with model:@address, url: public_addresses_path, local:true do |f| %>
         <h4>郵便番号（ハイフンなし）</h4>
         <%= f.text_field :postal_code %>

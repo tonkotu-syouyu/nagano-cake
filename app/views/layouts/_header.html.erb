@@ -5,26 +5,44 @@
       <ul class="nav-list">
       <% if customer_signed_in? %>
           <!--customerがログインしている時 -->
-          ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！
-          <li class="nav-list-item"><%= link_to "マイページ", public_customers_my_page_path %><i class="fas fa-address-card"></i></li>
-          <li class="nav-list-item"><%= link_to "商品一覧", public_products_path %><i class="fas fa-pizza-slice"></i></li>
-          <li class="nav-list-item"><%= link_to "カート", public_cart_products_path %><i class="fas fa-shopping-cart"></i></li>
-          <li class="nav-list-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %><i class="fas fa-sign-out-alt"></i></li>
-
+          <div class="menu">
+            ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！
+            <li class="nav-list-item"><%= link_to "マイページ", public_customers_my_page_path, class: "fas fa-address-card" %></li>
+            <li class="nav-list-item"><%= link_to "商品一覧", public_products_path, class: "fas fa-utensils" %></li>
+            <li class="nav-list-item"><%= link_to "カート", public_cart_products_path, class: "fas fa-shopping-cart" %></li>
+            <li class="nav-list-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "fas fa-sign-out-alt" %></li>
+          </div>
+          <div class="search">
+            <%= form_with url: search_path, method: :get, local: :true do |f| %>
+            <%= f.select :range, options_for_select([['Customer'], ['Product'], ['Genre']]) %>
+            <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+            <%= f.text_field :word %>
+            <%= f.submit "検索" %>
+            <% end %></div>
         <% elsif admin_signed_in? %>
           <!-- 管理者がログインしている時 -->
-          <li class="nav-list-item"><%= link_to "商品一覧", admin_products_path %><i class="fas fa-pizza-slice"></i></li>
-          <li class="nav-list-item"><%= link_to "会員一覧", admin_customers_path %><i class="fas fa-users"></i></li>
-          <li class="nav-list-item"><%= link_to "注文履歴一覧", admin_root_path %><i class="fas fa-sort-amount-down-alt"></i></li>
-          <li class="nav-list-item"><%= link_to "ジャンル一覧", admin_genres_path %><i class="fas fa-cookie-bite"></i></li>
-          <li class="nav-list-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %><i class="fas fa-sign-out-alt"></i></li>
-
+          <div class="menu">
+            <li class="nav-list-item"><%= link_to "商品一覧", admin_products_path, class: "fas fa-utensils" %></li>
+            <li class="nav-list-item"><%= link_to "会員一覧", admin_customers_path, class: "fas fa-users" %></li>
+            <li class="nav-list-item"><%= link_to "注文履歴一覧", admin_root_path, class: "fas fa-sort-amount-down-alt" %></li>
+            <li class="nav-list-item"><%= link_to "ジャンル一覧", admin_genres_path, class: "fas fa-cookie-bite" %></li>
+            <li class="nav-list-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "fas fa-sign-out-alt" %></li>
+          </div>
+          <div class="search">
+            <%= form_with url: search_path, method: :get, local: :true do |f| %>
+            <%= f.select :range, options_for_select([['会員'], ['商品'],['ジャンル']]) %>
+            <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+            <%= f.text_field :word %>
+            <%= f.submit "検索" %>
+            <% end %></div>
         <% else %>
           <!-- ログインしていない時 -->
-          <li class="nav-list-item"><%= link_to "About", public_about_path %><i class="far fa-comment"></i></li>
-          <li class="nav-list-item"><%= link_to "商品一覧", public_products_path %><i class="fas fa-pizza-slice"></li>
-          <li class="nav-list-item"><%= link_to "新規登録", new_customer_registration_path %><i class="fas fa-user-plus"></i></li>
-          <li class="nav-list-item"><%= link_to "ログイン", new_customer_session_path %><i class="fas fa-sign-in-alt"></i></li>
+          <div class="menu">
+            <li class="nav-list-item"><%= link_to "About", public_about_path, class: "far fa-comment" %></li>
+            <li class="nav-list-item"><%= link_to "商品一覧", public_products_path, class: "fas fa-utensils" %></li>
+            <li class="nav-list-item"><%= link_to "新規登録", new_customer_registration_path, class: "fas fa-user-plus" %></li>
+            <li class="nav-list-item"><%= link_to "ログイン", new_customer_session_path, class: "fas fa-sign-in-alt" %></li>
+          </div>
         <% end %>
       </ul>
     </div>

@@ -12,4 +12,12 @@ class Product < ApplicationRecord
   def addTax
    taxed_money = self.price*1.1
   end
+  
+  def self.looks(searches, words)
+    if searches == "perfect_match"
+      @product = Product.where("name LIKE ?", "#{words}")
+    else
+      @product = Product.where("name LIKE ?", "%#{words}%")
+    end
+  end
 end

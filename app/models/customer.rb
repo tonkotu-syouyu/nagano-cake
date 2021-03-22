@@ -34,5 +34,13 @@ class Customer < ApplicationRecord
   #   self.address = JpPrefecture::Address.find(name: address).code
 
   # end
+  
+  def self.looks(searches, words)
+    if searches == "perfect_match"
+      @customer = Customer.where("name LIKE ?", "#{words}")
+    else
+      @customer = Customer.where("name LIKE ?", "%#{words}%")
+    end
+  end
 
 end
