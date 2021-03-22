@@ -15,15 +15,15 @@
           </div>
           <span class="address">お届け先</span><br>
           <div class="radio-inline">
+            <% address = "〒"+ current_customer.postal_code + current_customer.address + current_customer.last_name + current_customer.first_name %>
             <%= f.radio_button :address_option, 0, checked: "checked" %>
             <%= f.label :order_address, "ご自身の住所" %><br>
-            <%= @customer.postal_code %>
-            <%= @customer.address %>
+            <%= address %>
           </div>
           <div class="radio-inline">
             <%= f.radio_button :address_option, 1 %>
             <%= f.label :order_address, "登録済住所から選択" %>
-            <%# f.collection_select :order_address , current_customer.address, :id, :address , :include_blank => "選択してください" %>
+            <%= f.collection_select :selected_address , current_customer.addresses, :id, :address %>
           </div>
           <div class="radio-inline">
             <%= f.radio_button :address_option, 2 %>
