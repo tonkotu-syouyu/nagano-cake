@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   validates :price, presence: true
 
   def addTax
-   taxed_money = self.price*1.1
+   taxed_money = (self.price*1.1).round
   end
 
 end

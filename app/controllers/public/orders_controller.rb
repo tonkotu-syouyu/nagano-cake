@@ -35,19 +35,28 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(session[:order])
     @order.customer_id = current_customer.id
+    @order.shipping_cost = 800
+    @cart_products = current_customer.cart_products
     if @order.save
+      @cart_products.each do |cart_product|
+        @order_detail = OrderDetail.new
+        @order_detail.amount = cart_product.amount
+        @order_detail.price = cart_product.product.addTax
+        @order_detail.product_id = cart_product.product_id
+        @order_detail.order_id = @order.id
+        @order_detail.save!
+      end
+      @cart_products.destroy_all
       redirect_to public_orders_complete_path, notice: 'You have created book successfully'
     end
   end
 
   def index
     @orders = Order.all.page(params[:page]).per(10)
-    @customer = current_customer
   end
 
   def show
     @order = Order.find(params[:id])
-    # @orders.cart_product =
   end
 
 end
