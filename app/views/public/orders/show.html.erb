@@ -26,13 +26,13 @@
       <th>個数</th>
       <th>小計</th>
     </tr>
-  <%# @order_details.each do |order_detail| %>
+  <%= @order_details.order.each do |order_detail| %>
     <tr>
-      <td><%# order_details.product.name %></td>
-      <td><%# number_with_delimiter(cart_product.product.addTax.round, :delimiter => ',') %></td>
-      <td><%# cart_product.amount %></td>
-      <td><%# number_with_delimiter(cart_product.total_price.round, :delimiter => ',') %></td>
+      <td><%= order_details.order.product.name %></td>
+      <td><%= number_with_delimiter(order_details.price, :delimiter => ',') %></td>
+      <td><%= order_details.amount %></td>
+      <td><%= number_with_delimiter(order_details.total_price.round, :delimiter => ',') %></td>
     </tr>
-  <%# end %>
+  <% end %>
   </table>
 </div>
