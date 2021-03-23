@@ -25,10 +25,10 @@ Rails.application.routes.draw do
       # put 'customers/withdraw', to: 'customers#withdraw'
     delete 'cart_products/destroy_all'
     resources :cart_products, only:[:index, :update, :destroy, :create]
-    # delete 'cart_products/destroy_all'
+     get 'orders/complete'
+    post 'orders/confirm'
     resources :orders, only:[:new, :create, :index, :show]
-      post 'orders/confirm'
-      get 'orders/complete'
+
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
   end
 
