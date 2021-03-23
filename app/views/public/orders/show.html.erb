@@ -3,8 +3,7 @@
   <div class="col-lg-8">
     <h5>注文情報</h5>
     <table class="table">
-      <tr><th>注文日</th><td><%= @order.created_at %></td></tr>
-      <tr><th>配送先</th><td><%= @order.address %></td></tr>
+      <tr><th>注文日</th><td><%= @order.address %></td></tr>
       <tr><th>支払方法</th><td><%= @order.payment_method %></td></tr>
       <tr><th>注文ステータス</th><td><%= @order.status %></td></tr>
     </table>
@@ -12,9 +11,24 @@
   <div class="col-lg-4">
     <h5>請求情報</h5>
     <table>
-      <tr><th>商品合計</th><td></td></tr>
-      <tr><th>配送料</th><td>800</td></tr>
-      <tr><th>ご請求額</th><td></td></tr>
+      <tr>
+        <th>商品合計</th>
+        <td>
+        <% numbers = 1..10 %>
+        <% sum = 0 %>
+        <% @order.order_details.each do |order_detail| %>
+          <% sum += order_detail.subtotal %>
+        <% end %>
+        <%= sum %>
+        </td>
+      </tr>
+        <tr><th>配送料</th><td>800</td></tr>
+        <% sum += 800 %>
+        <tr><th>ご請求額</th>
+        <td>
+        <%= number_with_delimiter(sum.round, :delimiter => ',') %>
+        </td>
+      </tr>
     </table>
   </div>
 </div>
@@ -26,13 +40,13 @@
       <th>個数</th>
       <th>小計</th>
     </tr>
-  <%# @order_details.each do |order_detail| %>
+    <% @order.order_details.each do |order_detail| %>
     <tr>
-      <td><%# order_details.product.name %></td>
-      <td><%# number_with_delimiter(cart_product.product.addTax.round, :delimiter => ',') %></td>
-      <td><%# cart_product.amount %></td>
-      <td><%# number_with_delimiter(cart_product.total_price.round, :delimiter => ',') %></td>
+      <td><%= order_detail.product.name %></td>
+      <td><%= number_with_delimiter(order_detail.price, :delimiter => ',') %></td>
+      <td><%= order_detail.amount %></td>
+      <td><%= number_with_delimiter(order_detail.subtotal, :delimiter => ',') %></td>
     </tr>
-  <%# end %>
+    <% end %>
   </table>
 </div>
