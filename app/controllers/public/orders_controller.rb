@@ -8,6 +8,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @cart_products = current_customer.cart_products
     @order = Order.new
+    @order.shipping_cost = 800
     @order.payment_method = params[:order][:payment_method]
     #ご自身の住所を選択した時
     if params[:order][:address_option] == "0"
@@ -36,6 +37,11 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(session[:order])
     @order.customer_id = current_customer.id
     if @order.save
+      current_customer.cart_products.each do |cart_product|
+        order_detail = OrderDetail.new(product_id: cart_product.product.id,order_id: @order.id,price: cart_product.product.price,amount: cart_product.amount,making_status:  "着手不可")
+        order_detail.save
+        cart_product.destroy
+      end
       redirect_to public_orders_complete_path, notice: 'You have created book successfully'
     end
   end
