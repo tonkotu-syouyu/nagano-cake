@@ -1,0 +1,47 @@
+<% if @datas.empty? %>
+  <h2>該当する商品はありません</h2>
+<% end %>
+ <h2>商品検索結果 '<%= @value %>'</h2>
+ <% if customer_signed_in? %>
+ <div class="row">
+    <% @datas.each do |data| %>
+      <div class="col-lg-4">
+        <%= link_to public_product_path(data) do %>
+          <%= attachment_image_tag data, :image, size: "200x150", fallback: "no_image.jpeg" %><br>
+        <% end %>
+        <%= data.name %><br>
+        ¥<%= number_with_delimiter(data.price, :delimiter => ',') %><br>
+      </div>
+    <% end %>
+  </div>
+ <% elsif admin_signed_in? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>商品画像</th>
+          <th>商品</th>
+          <th>商品名</th>
+          <th>商品説明</th>
+          <th>税抜価格</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+  <% @datas.each do |data| %>
+    <tbody>
+        <tr>
+          <td></td>
+          <td><%= attachment_image_tag data, :image, size: "60x60", fallback: "no_image.jpeg"%></td>
+          <td><%= link_to data.name, admin_product_path(data) %></td>
+          <td><%= data.introduction %></td>
+          <td><%= data.price %></td>
+          <td><%= data.genre.name %></td>
+          <td><% if data.is_active == false %>
+          販売中
+          <% else %>
+          販売停止中
+          <% end %></td>
+        </tr>
+      </tbody>
+  <% end %>
+  <% end %>

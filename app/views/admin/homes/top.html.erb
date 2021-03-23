@@ -1,5 +1,5 @@
 <div class="container">
-<h2 class="admin-customers-top-title">注文履歴一覧</h2>
+<h2 class="index-title">注文履歴一覧</h2>
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
     <table class="table table-hover table-bordered table-condensed">
@@ -11,7 +11,7 @@
           <th class="col-xs-2">注文ステータス</th>
         </tr>
       </thead>
-      
+
     <tboby>
       <% @orders.each do |order| %>
       <tr>
@@ -30,11 +30,11 @@
     	<%= order.order_status %>
      	</td>
      	</tr>
-		  
+
       <% end %>
     </tboby>
-      
-      
+
+
     </table>
   </div>
 </div>
