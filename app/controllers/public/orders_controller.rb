@@ -48,6 +48,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    # @orders.cart_product =
   end
 
 end
