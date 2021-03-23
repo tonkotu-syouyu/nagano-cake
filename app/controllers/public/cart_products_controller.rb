@@ -8,6 +8,9 @@ class Public::CartProductsController < ApplicationController
   end
 
   def update
+    @cart_products = CartProduct.find(params[:id])
+    @cart_products.update(cart_product_params)
+    redirect_to public_cart_products_path
   end
 
   def destroy
@@ -34,6 +37,10 @@ class Public::CartProductsController < ApplicationController
 
   def setup_cart_product!
     @cart_product = current_cart.cart_products.find_by(product_id: params[:product_id])
+  end
+  
+  def cart_product_params
+    params.require(:cart_product).permit(:amount)
   end
 
 end
