@@ -5,16 +5,7 @@
       <ul class="nav-list">
       <% if customer_signed_in? %>
           <!--customerがログインしている時 -->
-<<<<<<< HEAD
-          ようこそ、<%= current_customer.last_name %>
-                <%= current_customer.first_name %>さん！
 
-          <li class="nav-list-item"><%= link_to "マイページ", public_customers_my_page_path %><i class="fas fa-address-card"></i></li>
-          <li class="nav-list-item"><%= link_to "商品一覧", public_products_path %><i class="fas fa-pizza-slice"></i></li>
-          <li class="nav-list-item"><%= link_to "カート", public_cart_products_path %><i class="fas fa-shopping-cart"></i></li>
-          <li class="nav-list-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %><i class="fas fa-sign-out-alt"></i></li>
-
-=======
           <div class="menu">
             ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！
             <li class="nav-list-item"><%= link_to "マイページ", public_customers_my_page_path, class: "fas fa-address-card" %></li>
@@ -29,7 +20,7 @@
               <%= f.select 'search[how]', options_for_select({ "部分一致" => "partical", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "match" }) %>
               <%= f.submit :"検索" %>
                   <% end %></div>
->>>>>>> origin/develop
+
         <% elsif admin_signed_in? %>
           <!-- 管理者がログインしている時 -->
           <div class="menu">
