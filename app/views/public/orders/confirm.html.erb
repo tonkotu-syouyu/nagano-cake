@@ -8,12 +8,14 @@
           <th>数量</th>
           <th>小計</th>
         </tr>
+        <% sum = 0 %>
         <% @cart_products.each do |cart_product| %>
           <tr>
             <td><%= cart_product.product.name %></td>
             <td><%= number_with_delimiter(cart_product.product.addTax.round, :delimiter => ',') %></td>
             <td><%= cart_product.amount %></td>
             <td><%= number_with_delimiter(cart_product.total_price.round, :delimiter => ',') %></td>
+            <td><% sum += (cart_product.total_price).to_i %></td>
           </tr>
         <% end %>
       </table>
@@ -21,8 +23,9 @@
     <div class="col-lg-4">
       <table class="table">
         <tr><th>送料</th><td>800</td></tr>
-        <tr><th>商品合計</th><td></td></tr>
-        <tr><th>請求金額</th><td></td></tr>
+        <tr><th>商品合計</th><td><%= number_with_delimiter(sum.round, :delimiter => ',') %></td></tr>
+        <% sum += 800 %>
+        <tr><th>請求金額</th><td><%= number_with_delimiter(sum.round, :delimiter => ',') %></td></tr>
       </table>
     </div>
   </div>
