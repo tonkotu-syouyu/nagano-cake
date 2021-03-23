@@ -15,68 +15,6 @@
  */
 @import"bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
-
-
-header, body, footer {
-  font-family: "M PLUS Rounded 1c", cursive, sans-serif;
-}
-
-.header {
-  background-color: lightsalmon;
-  width: 100%;
-  height: 60px;
-}
-
-.Editlink {
-  text-decoration: none;
-}
-
-.button {
-  background-color: gold;
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius:30px;
-  text-align: center;
-  font-weight: bold;
-  display: inline-block;
-  font-size: 25px;
-}
-.nav-list {
-  text-align: center;
-  padding: 10px 0;
-  margin: 0 auto;
-}
-
-.nav-list-item {
-  list-style: none;
-  display: inline-block;
-  margin: 0 20px;
-  padding: auto;
-  font-family: "M PLUS Rounded 1c", cursive, sans-serif;
-}
-
-.index-title {
-  background-color: lightseagreen;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  font-family: "M PLUS Rounded 1c", cursive, sans-serif;
-}
-
-.new-form-table, .table, .text-right, .col-xs-4, .edit-genre-form, .show-title {
-  font-family: "M PLUS Rounded 1c", cursive, sans-serif;
-}
-
-.footer {
-  background-color: lightsalmon;
-  width: 100%;
-  height: 30px;
-  color: white;
-  text-align: center;
-  font-family: "M PLUS Rounded 1c", cursive, sans-serif;
-}
-
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
@@ -104,10 +42,27 @@ header, body, footer {
   background-color: lightsalmon;
   width: 100%;
   height: 100px;
+  font-family: "M PLUS Rounded 1c", cursive, sans-serif;
 }
 
-.Editlink {
-  text-decoration: none;
+.top-container {
+  width: 100%;
+  margin: auto, 30px;
+}
+
+
+.rogo {
+  float: left;
+  width: 400px;
+  height: 100px;
+  background-image: url(rogo.jpeg);
+  text-align: left;
+  background-size: cover;
+
+}
+
+nav {
+  text-align: right;
 }
 
 .wrapper {
@@ -137,6 +92,7 @@ header, body, footer {
   padding: 10px 0;
   margin: 0 auto;
   color: white;
+  text-align: right;
 }
 
 .menu {
@@ -155,7 +111,6 @@ header, body, footer {
   padding: auto;
   font-family: "M PLUS Rounded 1c", cursive, sans-serif;
 }
-
 
 .index-title {
   background-color: lightseagreen;
