@@ -4,7 +4,7 @@
     <h2 class="new-title">商品新規登録</h2><br>
     <%= form_for(@product, url: admin_products_path) do |f| %>
     <div class="col-xs-4">
-      
+
       <div class="product-image">
         <%= attachment_image_tag @product, :image, fallback: "no_image.jpeg", size:"300x300" %>
       </div><br>
@@ -41,7 +41,7 @@
         </div>
         </div>
         <% end %>
-      
+
 
     </div>
   </div>
