@@ -24,7 +24,7 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:address_option] == "2"
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:order_address]
-      # @orer.name = params[:order][:addresses_name]
+      @order.name = params[:order][:addresses_name]
     end
     session[:order] = @order
   end
