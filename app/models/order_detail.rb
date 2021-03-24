@@ -17,7 +17,7 @@ class OrderDetail < ApplicationRecord
 
 
   def subtotal
-	  (self.price * self.amount)
+	  self.price * self.amount
 	end
 
 end
