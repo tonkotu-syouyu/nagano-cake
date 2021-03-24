@@ -17,7 +17,7 @@
       <tr>
       <td>
 		    <%= link_to admin_order_path(order), data: {"turbolinks" => false}, :style=>"color:#528fff;"  do %>
-		    <%= order.created_at %>
+		    <%= order.created_at.strftime("%Y/%m/%d") %>
 		    <% end %>
 		  </td>
       <td class="text-left">
@@ -25,7 +25,7 @@
         <%= order.customer.last_name %>
 		  </td>
 		  <td class="text-right">
-		     <%= order.order_details.count %>
+		    <%= order.order_details.count %>
 		  </td>
 		  <td>
     	<%= order.status %>

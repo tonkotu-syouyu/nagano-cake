@@ -33,7 +33,7 @@
           <tr>
             <td>注文ステータス</td>
             <td><%= form_for (@order), url: admin_order_path(@order) do |f| %>
-                <%= f.select :order_details, [["入金待ち", "入金待ち"], ["入金確認","入金確認"],["製作中","製作中"],["発送準備中","発送準備中"],["発送済み","発送済み"]], class: "form-control" %>
+                <%= f.select :status, [["入金待ち", "入金待ち"], ["入金確認","入金確認"],["製作中","製作中"],["発送準備中","発送準備中"],["発送済み","発送済み"]], class: "form-control" %>
                 <%= f.submit "更新", class: "btn btn-primary btn-sm" %>
                 <% end %>
             </td>

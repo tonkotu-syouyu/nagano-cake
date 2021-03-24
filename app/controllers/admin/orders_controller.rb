@@ -22,7 +22,7 @@ class Admin::OrdersController < ApplicationController
     redirect_to admin_order_path(order)
   end
 
-  def product_status_update
+  def making_status_update
     order_detail = OrderDetail.find(params[:id])
     order_detail.update(order_detail_params)
     redirect_to admin_order_path(order_detail.order_id)
@@ -30,6 +30,7 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
+    @order.status = params[:order][:status]
     @order.update(order_params)
     flash[:success] = "更新完了"
     redirect_to admin_orders_path
@@ -41,6 +42,6 @@ class Admin::OrdersController < ApplicationController
   end
 
   def order_detail_params
-    params.require(:order_detail).permit(:item_status)
+    params.require(:order_detail).permit(:product_status)
   end
 end

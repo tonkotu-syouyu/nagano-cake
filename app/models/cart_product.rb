@@ -4,7 +4,7 @@ class CartProduct < ApplicationRecord
 
   def total_price
 	  (self.product.price*1.1 * self.amount).to_i
-    end
+  end
 
 # 　def total_sum
 # 　  cart_product.to_a.sum { |cart_product| cart_product.total_price }
