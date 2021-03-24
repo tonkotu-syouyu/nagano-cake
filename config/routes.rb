@@ -16,8 +16,6 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about', to: 'homes#about'
     resources :products, only:[:index, :show]
-    #resources :registrations, only:[:new, :create]
-    #resources :sessions, only:[:new, :create, :destroy]
     patch 'customers/withdraw', to: 'customers#withdraw'
     resources :customers, only:[:edit, :update] do
         collection do
