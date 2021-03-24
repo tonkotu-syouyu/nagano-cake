@@ -1,8 +1,6 @@
 <p id="notice"></p>
-  <div class="container">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-      <table class="table table-borderless">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <table class="table table-borderless">
           <thead>
             <tr>
               <th scope="col"></th>
@@ -63,7 +61,6 @@
               <td></td>
               <td></td>
               <td></td>
+              <td><input type="button", onclick="location.href='/admins/sign_in'" value="管理者はこちらからログイン" ></td>
             </tr>
      <% end %>
-  </div>
-
