@@ -52,7 +52,6 @@ header, body, footer {
 
 .container{
   width: 100%;
-  overflow: hidden;
 }
 
 .rogo {
@@ -116,6 +115,7 @@ nav {
   font-family: "M PLUS Rounded 1c", cursive, sans-serif;
 }
 
+
 .index-title {
   background-color: lightseagreen;
   text-align: center;
@@ -129,7 +129,7 @@ nav {
 }
 
 .push {
-  height: 100px;/*フッターと同じ高さに指定*/
+  height: 100px;
 }
 
 .footer {
@@ -141,5 +141,10 @@ nav {
   font-family: "M PLUS Rounded 1c", cursive, sans-serif;
   position: absolute;
   bottom: 0;
-  padding: auto;
+  margin: auto;
+
+}
+
+.footer-text {
+ margin: auto;
 }
