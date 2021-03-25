@@ -24,7 +24,7 @@ Rails.application.routes.draw do
         end
     end
 
-      # put 'customers/withdraw', to: 'customers#withdraw'
+
     delete 'cart_products/destroy_all'
     resources :cart_products, only:[:index, :update, :destroy, :create]
      get 'orders/complete'
