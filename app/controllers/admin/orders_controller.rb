@@ -22,11 +22,19 @@ class Admin::OrdersController < ApplicationController
   #   redirect_to admin_order_path(order)
   # end
 
+
+  def making_status_update
+    order_detail = OrderDetail.find(params[:id])
+    order_detail.update(order_detail_params)
+    redirect_to admin_order_path(order_detail.order_id)
+  end
+
   # def product_status_update
   #   order_detail = OrderDetail.find(params[:id])
   #   order_detail.update(order_detail_params)
   #   redirect_to admin_order_path(order_detail.order_id)
   # end
+
 
   def update
     @order = Order.find(params[:id])
@@ -34,7 +42,7 @@ class Admin::OrdersController < ApplicationController
     @order.update(order_params)
       if @order.status = "入金確認"
         @order.order_details.each do |order_detail|
-          order_detail.update(making_status: 2)
+          order_detail.update(making_status: 1)
         end
       end
     redirect_back(fallback_location: admin_orders_path)
@@ -54,6 +62,6 @@ class Admin::OrdersController < ApplicationController
   end
 
   def order_detail_params
-    params.require(:order_detail).permit(:item_status)
+    params.require(:order_detail).permit(:product_status)
   end
 end
