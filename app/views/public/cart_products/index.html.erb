@@ -23,7 +23,7 @@
       <% @cart_products.each do |cart_product| %>
         <tr>
           <td><%= attachment_image_tag cart_product.product, :image, size: "90x60", fallback: "no_image.jpeg" %><%= cart_product.product.name %></td>
-          <td><%= number_with_delimiter(cart_product.product.addTax, :delimiter => ',') %></td>
+          <td><%= number_with_delimiter(cart_product.product.addTax.round, :delimiter => ',') %></td>
           <td>
             <%= form_with model: cart_product, url:public_cart_product_path(cart_product.id), local: true do |f| %>
               <%= f.select :amount, options_for_select(numbers, selected: cart_product.amount.to_i) %>

@@ -18,7 +18,7 @@ before_action :authenticate_admin!,only: [:create,:edit,:update,:index, :show, :
     # @genre = Genre.new
     if @product.save
       flash[:success] = "商品登録完了しました"
-      redirect_to admin_products_path
+      redirect_to admin_product_path(@product)
     else
       flash.now[:warning] = "入力不備があります"
       render :new

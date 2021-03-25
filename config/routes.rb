@@ -16,12 +16,14 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about', to: 'homes#about'
     resources :products, only:[:index, :show]
-    #resources :registrations, only:[:new, :create]
-    #resources :sessions, only:[:new, :create, :destroy]
     patch 'customers/withdraw', to: 'customers#withdraw'
-    resources :customers, only:[:edit, :update]
-      get '/customers/my_page', to: 'customers#show'
-      get 'customers/unsubscribe'
+    resources :customers, only:[:edit, :update] do
+        collection do
+            get 'unsubscribe'
+            get 'my_page'
+        end
+    end
+
       # put 'customers/withdraw', to: 'customers#withdraw'
     delete 'cart_products/destroy_all'
     resources :cart_products, only:[:index, :update, :destroy, :create]

@@ -12,5 +12,6 @@ def subtotal
 	  (self.price * self.amount)
 end
 
+
   
 end
