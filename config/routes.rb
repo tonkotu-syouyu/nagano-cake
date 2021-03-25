@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update, :index]
-    resources :orders_details, only: [:update]
+    resources :order_details, only: [:update]
   end
 
 
@@ -59,4 +59,5 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   #get 'top' => 'public/homes#top'
-  end
+end
+

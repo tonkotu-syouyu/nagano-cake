@@ -16,24 +16,37 @@ class Admin::OrdersController < ApplicationController
     return @products_total_payment
   end
 
-  def order_status_update
-    order = Order.find(params[:id])
-    order.update(order_params)
-    redirect_to admin_order_path(order)
-  end
+  # def order_status_update
+  #   order = Order.find(params[:id])
+  #   order.update(order_params)
+  #   redirect_to admin_order_path(order)
+  # end
 
-  def product_status_update
-    order_detail = OrderDetail.find(params[:id])
-    order_detail.update(order_detail_params)
-    redirect_to admin_order_path(order_detail.order_id)
-  end
+  # def product_status_update
+  #   order_detail = OrderDetail.find(params[:id])
+  #   order_detail.update(order_detail_params)
+  #   redirect_to admin_order_path(order_detail.order_id)
+  # end
 
   def update
     @order = Order.find(params[:id])
+    @order.status = params[:order][:status]
     @order.update(order_params)
-    flash[:success] = "更新完了"
-    redirect_to admin_orders_path
+      if @order.status = "入金確認"
+        @order.order_details.each do |order_detail|
+          order_detail.update(making_status: 2)
+        end
+      end
+    redirect_back(fallback_location: admin_orders_path)
   end
+
+
+#   after_order_update do
+#   order = self.order
+#   if order.update(order_status: "入金確認") == true #　条件分岐 : 注文ステータスが入金確認になったら
+#     order_details.all? {|order_detail| order_detail.making_status == "制作待ち"} # 条件分岐 : 制作ステータスをすべて制作待ちにする
+#   end
+# end
 
   private
   def order_params
