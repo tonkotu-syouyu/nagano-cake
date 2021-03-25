@@ -44,6 +44,7 @@ class Public::OrdersController < ApplicationController
         order_detail.save
       end
       @cart_products.destroy_all
+      @order.update(status: 0)
       redirect_to public_orders_complete_path, notice: 'You have created book successfully'
     end
   end

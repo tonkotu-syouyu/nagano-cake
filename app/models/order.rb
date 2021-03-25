@@ -15,6 +15,13 @@ class Order < ApplicationRecord
   sum
 end
 
+  def total_payment
+    sum = 0
+    self.order_details.each do |order_detail|
+      sum += order_detail.subtotal
+    end
+    sum
+  end
 
 
 end
