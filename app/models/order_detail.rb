@@ -1,4 +1,5 @@
 class OrderDetail < ApplicationRecord
+
   belongs_to :order
   belongs_to :product
 
@@ -6,8 +7,11 @@ class OrderDetail < ApplicationRecord
 
 
 
-  def subtotal
-	  self.price * self.amount
-	end
 
+def subtotal
+	  (self.price * self.amount)
+end
+
+
+  
 end
