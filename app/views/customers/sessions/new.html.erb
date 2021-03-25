@@ -1,0 +1,68 @@
+<p id="notice"></p>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                <h5>ログイン</h5>
+              </th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <h5>　会員の方はこちらからログイン</h5>
+              </th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">メールアドレス</th>
+              <td colspan="3"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>パスワード</th>
+              <td colspan="3"><%= f.password_field :password, autocomplete: "current-password", class: "form-control" %></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td><%= f.submit "Log in", class: "btn btn-primary" %></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <h5>会員登録がお済みでない方</h5>
+              </th>
+              <td><%= render "customers/shared/links" %></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><input type="button", onclick="location.href='/admins/sign_in'" value="管理者はこちらからログイン" ></td>
+            </tr>
+      </table>
+     <% end %>
+
