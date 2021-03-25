@@ -12,7 +12,7 @@ class Admin::OrderDetailsController < ApplicationController
     # ①[orderに紐づく、order_detailの中でmaking_statusが3のもの]の数
     making_done_count = order.order_details.where(making_status: 3).count
     # ①とorderに紐づくorder_detailの数が同じなら、
-    # (= orderに紐づくorder_detailが全て「制作完了」ということに等しい。)
+    # (= orderに紐づくorder_detailが全て「制作完了」ということに等しい。
     if making_done_count == order.order_details.count
       order.update(status: 3)
     end
