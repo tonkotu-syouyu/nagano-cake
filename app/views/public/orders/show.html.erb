@@ -3,7 +3,7 @@
   <div class="col-lg-8">
     <h5>注文情報</h5>
     <table class="table">
-      <tr><th>注文日</th><td><%= @order.address %></td></tr>
+      <tr><th>注文日</th><td><%= @order.created_at.strftime("%Y/%m/%d") %></td></tr>
       <tr><th>支払方法</th><td><%= @order.payment_method %></td></tr>
       <tr><th>注文ステータス</th><td><%= @order.status %></td></tr>
     </table>

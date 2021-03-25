@@ -16,12 +16,14 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about', to: 'homes#about'
     resources :products, only:[:index, :show]
-    #resources :registrations, only:[:new, :create]
-    #resources :sessions, only:[:new, :create, :destroy]
     patch 'customers/withdraw', to: 'customers#withdraw'
-    resources :customers, only:[:edit, :update]
-      get '/customers/my_page', to: 'customers#show'
-      get 'customers/unsubscribe'
+    resources :customers, only:[:edit, :update] do
+        collection do
+            get 'unsubscribe'
+            get 'my_page'
+        end
+    end
+
       # put 'customers/withdraw', to: 'customers#withdraw'
     delete 'cart_products/destroy_all'
     resources :cart_products, only:[:index, :update, :destroy, :create]
@@ -49,7 +51,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update, :index]
-    resources :orders_details, only: [:update]
+    resources :order_details, only: [:update]
   end
 
 
@@ -57,4 +59,5 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   #get 'top' => 'public/homes#top'
-  end
+end
+
