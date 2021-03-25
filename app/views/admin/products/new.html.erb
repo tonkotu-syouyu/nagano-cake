@@ -1,13 +1,12 @@
-
 <div class="row1">
   <h2 class="index-title">商品新規登録</h2><br>
     <%= form_for(@product, url: admin_products_path) do |f| %>
-   <div class="col-xs-4">
-      <div class="product-image">
-        <%= attachment_image_tag @product, :image, fallback: "no_image.jpeg", size:"250x250" %>
-      </div><br>
+  <div class="col-xs-4">
+    <div class="product-image">
+      <%= attachment_image_tag @product, :image, fallback: "no_image.jpeg", size:"250x250" %>
+    </div><br>
       <%= f.attachment_field :image, placeholder: "商品画像" %>
-    </div>
+  </div>
     <br><br><br>
       <div class="col-md-5 col-md-offset-2 col-xs-6 col-xs-offset-2">
         <table class="new-form-table">
