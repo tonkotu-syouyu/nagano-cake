@@ -14,4 +14,5 @@ class Order < ApplicationRecord
     sum
   end
 
+
 end
