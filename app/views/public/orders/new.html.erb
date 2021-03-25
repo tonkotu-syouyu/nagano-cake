@@ -4,7 +4,7 @@
       <h4 class="index-title">注文情報入力</h4>
       <div class="field">
         <%= form_with model: @order, url: public_orders_confirm_path, local: true do |f| %>
-          <span class="payment_method">支払い情報</span><br>
+          <h5 class="payment_method">支払い情報</h5>
           <div class="radio-inline">
             <%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>
             <%= f.label :クレジットカード, class: "payment_method_label" %>
@@ -13,7 +13,7 @@
             <%= f.radio_button :payment_method, :銀行振込 %>
             <%= f.label :銀光振込, class: "payment_method_label" %>
           </div>
-          <span class="address">お届け先</span><br>
+          <h5 class="address">お届け先</h5>
           <div class="radio-inline">
             <% address = "〒"+ current_customer.postal_code + '　' + current_customer.address + '　' + current_customer.last_name + current_customer.first_name %>
             <%= f.radio_button :address_option, 0, checked: "checked" %>
