@@ -14,7 +14,7 @@
  *= require_self
  */
 @import"bootstrap";
-
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
@@ -58,7 +58,6 @@ header, body, footer {
   float: left;
   width: 400px;
   height: 100px;
-  background-image: url(rogo.jpeg);
   text-align: left;
   background-size: cover;
 
