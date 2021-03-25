@@ -180,7 +180,7 @@ Rudy on Rais
 
 * 岡田 恭平
 
-* 塩塚　紗代
+* 塩塚　紗代(https://github.com/Sayo-Shiozuka)
 
 * 徳間　洋介
 
