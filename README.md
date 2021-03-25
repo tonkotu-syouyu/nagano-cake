@@ -172,7 +172,7 @@
 
 * フレームワーク
 
-Rudy on Rais
+Rudy on Rails
 
 ## 作成者
 
