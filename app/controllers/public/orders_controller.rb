@@ -36,15 +36,16 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(session[:order])
     @order.customer_id = current_customer.id
-    @order.shipping_cost = 800
+    @order.shipping_cost = 800 #送料は一律800円
     @cart_products = current_customer.cart_products
     if @order.save
+      # 注文詳細情報の保存
       current_customer.cart_products.each do |cart_product|
         order_detail = OrderDetail.new(product_id: cart_product.product.id,order_id: @order.id,price: cart_product.product.price,amount: cart_product.amount,making_status:  "着手不可")
         order_detail.save
       end
       @cart_products.destroy_all
-      @order.update(status: 0)
+      @order.update(status: 0)  #注文ステータスの初期値0＝"入金待ち"に更新
       redirect_to public_orders_complete_path, notice: 'You have created book successfully'
     end
   end
