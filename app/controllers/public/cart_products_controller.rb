@@ -29,8 +29,11 @@ class Public::CartProductsController < ApplicationController
     @cart_product = current_customer.cart_products.new
     @cart_product.product_id = params[:product_id]
     @cart_product.amount = params[:cart_product][:amount]
-    @cart_product.save
-    redirect_to public_cart_products_path
+    if @cart_product.save
+      redirect_to public_cart_products_path
+    else
+      render :index
+    end
   end
 
   private
@@ -38,7 +41,7 @@ class Public::CartProductsController < ApplicationController
   def setup_cart_product!
     @cart_product = current_cart.cart_products.find_by(product_id: params[:product_id])
   end
-  
+
   def cart_product_params
     params.require(:cart_product).permit(:amount)
   end
