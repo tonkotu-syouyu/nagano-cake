@@ -178,7 +178,7 @@ Rudy on Rails
 
 チーム名　【とんこつ醤油】
 
-* 岡田 恭平
+* 岡田 恭平（https://github.com/kyohei775）
 
 * 塩塚　紗代(https://github.com/Sayo-Shiozuka)
 
